@@ -23,6 +23,4 @@ replacers:
 change-template: '- #$NUMBER - $TITLE'
 change-title-escapes: '\<*&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 template: |
-  # Release Notes
-
   $CHANGES
