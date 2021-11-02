@@ -1,6 +1,6 @@
 name: PR Auto-Labeler Reusable Workflow
 
-# Auto labeled PR based on HEAD branch name.
+# Auto labeled PR based on HEAD branch name. These labels are then used to categorize the release notes.
 
 # Usage example:
 # on:

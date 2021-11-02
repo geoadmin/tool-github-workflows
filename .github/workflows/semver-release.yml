@@ -2,7 +2,9 @@ name: SemVer Release Reusable Workflow
 
 # Tag repository using SemVer. Merging in develop tagged the repo with beta version.
 # Merging to master tag with release and create a release with release notes based
-# on the PR titles.
+# on the PR titles. The minor version is bumped by default in the master branch.
+# To bump the major or patch version when merging to master, add #major or #patch
+# in the PR title.
 
 # Usage example
 # on:
@@ -35,12 +37,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+        DEFAULT_BUMP: minor
         RELEASE_BRANCHES: master
         TAG_CONTEXT: repo
 
     # Drafts your next Release notes as Pull Requests are merged into "master"
     - name: Create Release with Release Notes
       uses: release-drafter/release-drafter@v5
+      # Do not generate release for beta release tagged on develop branch.
       if: ${{ github.ref == 'refs/heads/master' }}
       with:
         config-name: release-drafter-config.yml
